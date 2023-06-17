@@ -72,6 +72,7 @@ function contactOptionsListGenerator() {
 
         listItem.appendChild(contact.svg);
         listItem.appendChild(methodElement);
+        listItem.appendChild(detailElement)
         contactOptionsList.appendChild(listItem);
     }
 
