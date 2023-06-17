@@ -1,3 +1,7 @@
+import './style.css';
+
+document.addEventListener('DOMContentLoaded', initLoader.init)
+
 const elementFactory = (() => {
     const headerFactory = document.createElement("header");
     const divCreator = document.createElement("div");
@@ -35,13 +39,13 @@ const elementFactory = (() => {
     }
 })();
 
-const backgroundCreator = (() => {
+const initLoader = (() => {
 
     const _buttonClickHandlerCreator = (button, handleClick) => { 
         button.addEventListener('click', handleClick)
     };
 
-    const pageLayoutCreator = () => {
+    const _pageLayoutCreator = () => {
         const header = elementFactory.headerFactory.cloneNode();
         const restoName = elementFactory.h1Factory.cloneNode();
         const footer = elementFactory.footerFactory.cloneNode();
@@ -85,8 +89,12 @@ const backgroundCreator = (() => {
         contentDiv.appendChild(footer);
     }
 
-    return {
+    const init =  () => {
         pageLayoutCreator
+    }
+
+    return {
+        init
     }
 
 })();
@@ -142,10 +150,14 @@ const homeTab = (() => {
         const welcomeImage = imageFactory('images/welcomesteak.jpg', 'Welcome Steak')
 
         mainContent.innerHTML = ''
-        homeDiv.classList.add("home")
-        welcomeDiv.classList.add("welcome")
-        openingHoursDiv.classList.add("openinghours")
-        openingHoursh2.classList.add("openinghoursh2")
+
+        homeDiv.classList.add("home");
+        welcomeDiv.classList.add("welcome");
+        welcomeh2.classlist.add("welcomeheader");
+        description.classList.add("description");
+        welcomeImage.classList.add("welcomeimage");
+        openingHoursDiv.classList.add("openinghours");
+        openingHoursh2.classList.add("openinghoursh2");
 
         welcomeh2.textContent = "Welcome to Regent Steakhouse!"
         description.textContent = "Regent Steakhouse is a top of the line steakhouse where we prepare steaks with only the finest cuts and the freshest ingredients. Aside from the food, our steakhouse is a great place to have some celebrations with your loved ones or have a business meeting."
