@@ -11,6 +11,13 @@ const elementFactory = (() => {
     const unorderedListFactory = document.createElement("ul");
     const listItemFactory = document.createElement("li");
 
+    const imageFactory = (src, alt) => {
+        const image = document.createElement('img');
+        image.src = src;
+        image.alt = alt;
+        return image;
+    }
+
 
     return {
         headerFactory,
@@ -23,7 +30,8 @@ const elementFactory = (() => {
         navFactory,
         buttonFactory,
         unorderedListFactory,
-        listItemFactory
+        listItemFactory,
+        imageFactory
     }
 })();
 
@@ -87,34 +95,68 @@ const homeTab = (() => {
 
     const _openingHoursFactory = (day, hours) => {
         return { day, hours }
+    };
+
+    const _openingHoursObjectArrayGenerator = () => {
+        const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        const openingHours = ['11am-8pm', '11am-8pm', '11am-8pm', '11am-8pm', '10am-11pm', '10am-11pm', '11am-9pm'];
+        const openingHoursList = []
+
+
+        for (let i = 0; i < daysOfWeek.length; i++) {
+            const day = daysOfWeek[i];
+            const hours = openingHours[i];
+
+            const openingHoursItem = _openingHoursFactory(day, hours);
+            openingHoursList.push(openingHoursItem);
+        }
+
+        return openingHoursList
+    };
+
+    const _openingHoursListGenerator = (array) => {
+        const openingHoursListElement = elementFactory.unorderedListFactory.cloneNode();
+
+        for (let i = 0; i < array.length; i++) {
+            const listItem = elementFactory.listItemFactory.cloneNode();
+            const arrayObject = array[i]
+
+            listItem.textContent = `${arrayObject.day}: ${arrayObject.hours}`
+            openingHoursListElement.appendChild(item);
+        }
+
+        return openingHoursListElement
     }
 
-    //have a list creating function here that converts the above objects to an item in a ul
+    
 
     const homeTabContentGenerator = () => {
         const mainContent = document.querySelector("main")
         const homeDiv = elementFactory.divCreator.cloneNode();
         const welcomeDiv = elementFactory.divCreator.cloneNode();
         const openingHoursDiv = elementFactory.divCreator.cloneNode();
-        const welcomeh2 = elementFactory.h2Factory.cloneNode()
+        const welcomeh2 = elementFactory.h2Factory.cloneNode();
+        const openingHoursh2 = elementFactory.h2Factory.cloneNode();
+        const description = elementFactory.paragraphFactory.cloneNode();
+        const openingHoursList = _openingHoursListGenerator(_openingHoursObjectArrayGenerator)
+        const welcomeImage = imageFactory('images/welcomesteak.jpg', 'Welcome Steak')
 
         mainContent.innerHTML = ''
         homeDiv.classList.add("home")
         welcomeDiv.classList.add("welcome")
         openingHoursDiv.classList.add("openinghours")
+        openingHoursh2.classList.add("openinghoursh2")
 
-
-        //create first div here called welcomeDiv
-        //put h2 here that has textContent "welcome to Regent Steakhouse"
-        //put p here with description and history of restaurant
-        //put some picture of a steak here
-
-        //have a second div called 
-
+        welcomeh2.textContent = "Welcome to Regent Steakhouse!"
+        description.textContent = "Regent Steakhouse is a top of the line steakhouse where we prepare steaks with only the finest cuts and the freshest ingredients. Aside from the food, our steakhouse is a great place to have some celebrations with your loved ones or have a business meeting."
 
         mainContent.appendChild(homeDiv);
+        welcomeDiv.appendChild(welcomeh2);
+        welcomeDiv.appendChild(description);
+        welcomeDiv.appendChild(welcomeImage);
         homeDiv.appendChild(welcomeDiv);
-        openingHoursDiv.appendChild(openingHoursDiv);
+        homeDiv.appendChild(openingHoursDiv);
+        openingHoursDiv.appendChild(openingHoursList)        
     }
 
     return {
