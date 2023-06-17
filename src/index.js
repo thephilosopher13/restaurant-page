@@ -4,9 +4,12 @@ const elementFactory = (() => {
     const paragraphFactory = document.createElement("p");
     const footerFactory = document.createElement("footer");
     const h1Factory = document.createElement("h1");
+    const h2Factory = document.createElement("h2");
     const mainContentDivFactory = document.createElement("main");
     const navFactory = document.createElement("nav");
     const buttonFactory = document.createElement("button");
+    const unorderedListFactory = document.createElement("ul");
+    const listItemFactory = document.createElement("li");
 
 
     return {
@@ -15,9 +18,12 @@ const elementFactory = (() => {
         paragraphFactory,
         footerFactory,
         h1Factory,
+        h2Factory,
         mainContentDivFactory,
         navFactory,
-        buttonFactory
+        buttonFactory,
+        unorderedListFactory,
+        listItemFactory
     }
 })();
 
@@ -79,14 +85,35 @@ const backgroundCreator = (() => {
 
 const homeTab = (() => {
 
+    //have a factory function here that has 2 properties which are "day" and "time of opening"
+    //have a list creating function here that converts the above objects to an item in a ul
+
     const homeTabContentGenerator = () => {
         const mainContent = document.querySelector("main")
         const homeDiv = elementFactory.divCreator.cloneNode();
+        const welcomeDiv = elementFactory.divCreator.cloneNode();
+        const openingHoursDiv = elementFactory.divCreator.cloneNode();
+        const welcomeh2 = elementFactory.h2Factory.cloneNode()
 
         mainContent.innerHTML = ''
         homeDiv.classList.add("home")
+        welcomeDiv.classList.add("welcome")
+        openingHoursDiv.classList.add("openinghours")
 
-        mainContent.appendChild(homeDiv)
+
+        //create first div here called welcomeDiv
+        //put h2 here that has textContent "welcome to Regent Steakhouse"
+        //put p here with description and history of restaurant
+        //put some picture of a steak here
+
+        //have a second div called 
+
+
+        mainContent.appendChild(homeDiv);
+        homeDiv.appendChild(welcomeDiv);
+        openingHoursDiv.appendChild(openingHoursDiv);
+
+
 
     }
 
@@ -98,12 +125,17 @@ const homeTab = (() => {
 
 const menuTab = (() => {
 
+    // have an factory function here that creates menu items with properties img, item name, description and price
+    // have another function "menuItemDivFactory" here that creates a div with class "item$", "gets" object by index number and returns a div with said items turned into a card with picture, name and description
+
     const menuTabContentGenerator = () => {
         const mainContent = document.querySelector("main")
         const menuDiv = elementFactory.divCreator.cloneNode();
 
         mainContent.innerHTML = ''
         menuDiv.classList.add("menu")
+
+        //have a loop here that goes for 6 iteriations of "menuItemDivFactory then appends them to menuDiv
 
         mainContent.appendChild(menuDiv)
     }
@@ -116,12 +148,17 @@ const menuTab = (() => {
 
 const contactTab = (() => {
 
+    //have a factory function there that has property "method of contact (e.g. email, phone, etc)" and contact detail
+
+
     const contactTabContentGenerator = () => {
         const mainContent = document.querySelector("main")
         const contactDiv = elementFactory.divCreator.cloneNode();
 
         mainContent.innerHTML = ''
         contactDiv.classList.add("contact")
+
+        // 
 
         mainContent.appendChild(contactDiv)
     }
