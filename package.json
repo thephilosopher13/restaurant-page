@@ -2,7 +2,7 @@
   "name": "webpack",
   "version": "1.0.0",
   "description": "A project where ES6 Modules, Webpack and DOM Manipulation is used to create a restaurant page.",
-  "private": true,
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
