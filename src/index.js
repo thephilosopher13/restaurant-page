@@ -85,7 +85,10 @@ const backgroundCreator = (() => {
 
 const homeTab = (() => {
 
-    //have a factory function here that has 2 properties which are "day" and "time of opening"
+    const _openingHoursFactory = (day, hours) => {
+        return { day, hours }
+    }
+
     //have a list creating function here that converts the above objects to an item in a ul
 
     const homeTabContentGenerator = () => {
@@ -112,9 +115,6 @@ const homeTab = (() => {
         mainContent.appendChild(homeDiv);
         homeDiv.appendChild(welcomeDiv);
         openingHoursDiv.appendChild(openingHoursDiv);
-
-
-
     }
 
     return {
@@ -125,7 +125,10 @@ const homeTab = (() => {
 
 const menuTab = (() => {
 
-    // have an factory function here that creates menu items with properties img, item name, description and price
+    const _menuItemFactory = (img, itemname, description, price) => {
+        return { img, itemname, description, price }
+    }
+
     // have another function "menuItemDivFactory" here that creates a div with class "item$", "gets" object by index number and returns a div with said items turned into a card with picture, name and description
 
     const menuTabContentGenerator = () => {
