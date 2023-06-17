@@ -59,10 +59,12 @@ function contactFactoryObjectsArrayGenerator() {
 function contactOptionsListGenerator() {
     const contactArray = contactFactoryObjectsArrayGenerator();
     const contactOptionsList = document.createElement("ul")
+    contactOptionsList.classList.add(contactoptionslist)
 
     for (let i = 0; i < contactArray.length; i++) {
         const contact = contactArray[i]
         const listItem = document.createElement("li");
+        listItem.classList.add("contactoptions")
 
         const methodElement = document.createElement("span");
         methodElement.textContent = contact.method;
