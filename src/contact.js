@@ -51,8 +51,6 @@ function contactFactoryObjectsArrayGenerator() {
 
         const contactObject = contactFactory(svg, method, contactDetail);
         contactArray.push(contactObject);
-
-        ck
     } 
 
     return contactArray
