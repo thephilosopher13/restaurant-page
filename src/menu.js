@@ -5,7 +5,7 @@ const menuItemFactory = (img, altdescription, itemname, price) => {
 function menuItemArrayGenerator() {
     const menuItemArray = []
     const altDescriptionArray = ["ribeye", "filetmignon", "beeftenderloin", "tbonesteak", "porterhouse", "primerib"]
-    const itemNameArray = ["Wagyu Ribeye", "USDA Angus Beef Filet Mignon", "Beef Tenderloin", "T-Bone Steak", "Porterhouse", "Prime Rib"]
+    const itemNameArray = ["Ribeye", "Filet Mignon", "Beef Tenderloin", "T-Bone Steak", "Porterhouse", "Prime Rib"]
     const priceArray = ["Php 5000", "Php 3820", "Php 2200", "Php 2100", "Php 2350", "Php 1900"]
 
     for (let i = 0; i < altDescriptionArray.length; i++) {
@@ -50,7 +50,7 @@ function generateMenuItemDiv(menuItem) {
 
 function generateMenuDiv(menuItemArray) {
   const menuDiv = document.createElement("div");
-  menuDiv.classList.add("menu");
+  menuDiv.classList.add("menugrid");
 
   for (let i = 0; i < menuItemArray.length; i++) {
     const menuItem = menuItemArray[i];
