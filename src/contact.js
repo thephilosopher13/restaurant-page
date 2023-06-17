@@ -1,6 +1,3 @@
-
-
-    //have a factory function there that has property "method of contact (e.g. email, phone, etc)" and contact detail
 const contactFactory = (svg, method, contactdetail) => {
     return {svg, method, contactdetail}
 }
@@ -44,7 +41,7 @@ function svgArrayGenerator() {
 function contactFactoryObjectsArrayGenerator() {
     const contactArray = []
     const svgArray = svgArrayGenerator()
-    const methodArray = ["Number, Email, Address"]
+    const methodArray = ["Number", "Email", "Address"]
     const contactDetailArray = ["+63 917 420 2137", "regentsteakhouse@fakeemail.com", "98th floor, One Bonifacio High, Taguig, NCR, Philippines"]
 
     for (let i = 0; i < svgArray.length; i++) {
@@ -54,21 +51,45 @@ function contactFactoryObjectsArrayGenerator() {
 
         const contactObject = contactFactory(svg, method, contactDetail);
         contactArray.push(contactObject);
+
+        ck
     } 
 
     return contactArray
 }
 
+function contactOptionsListGenerator() {
+    const contactArray = contactFactoryObjectsArrayGenerator();
+    const contactOptionsList = document.createElement("ul")
+
+    for (let i = 0; i < contactArray.length; i++) {
+        const contact = contactArray[i]
+        const listItem = document.createElement("li");
+
+        const methodElement = document.createElement("span");
+        methodElement.textContent = contact.method;
+
+        const detailElement = document.createElement("span");
+        detailElement.textContent = contact.contactdetail;
+
+        listItem.appendChild(contact.svg);
+        listItem.appendChild(methodElement);
+        contactOptionsList.appendChild(listItem);
+    }
+
+    return contactOptionsList;
+}
+
 function loadContact() {
     const mainContent = document.querySelector(".main")
     const contactDiv = document.createElement("div");
+    const contactOptions = contactOptionsListGenerator()
 
     mainContent.innerHTML = ''
-    contactDiv.classList.add("contact")
-
-    // 
-
+    contactDiv.classList.add("contact") 
+    
     mainContent.appendChild(contactDiv)
+    contactDiv.appendChild(contactOptions)
 }
 
 export default loadContact;
