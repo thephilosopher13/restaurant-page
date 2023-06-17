@@ -50,7 +50,6 @@ const backgroundCreator = (() => {
         contactButton.classList.add("contact");
         contactButton.classList.add("button");
         
-
         restoName.textContent = "Regent Steakhouse";
         credits.textContent = "Copyright © 2023 thephilosopher13";
         homeButton.textContent = "Home";
@@ -59,9 +58,7 @@ const backgroundCreator = (() => {
 
         _buttonClickHandlerCreator(homeButton, homeTab.homeTabContentGenerator());
         _buttonClickHandlerCreator(menuButton, menuTab.menuTabContentGenerator());
-        _buttonClickHandlerCreator()
-
-
+        _buttonClickHandlerCreator(contactButton, contactTab.contactTabContentGenerator());
 
         footer.appendChild(credits);
         header.appendChild(restoName);
@@ -119,18 +116,18 @@ const menuTab = (() => {
 
 const contactTab = (() => {
 
-    const menuTabContentGenerator = () => {
+    const contactTabContentGenerator = () => {
         const mainContent = document.querySelector("main")
         const contactDiv = elementFactory.divCreator.cloneNode();
 
         mainContent.innerHTML = ''
-        contactDiv.classList.add("menu")
+        contactDiv.classList.add("contact")
 
         mainContent.appendChild(contactDiv)
     }
 
     return {
-        menuTabContentGenerator
+        contactTabContentGenerator
     }
 
 })();
