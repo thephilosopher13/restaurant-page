@@ -41,6 +41,7 @@ function generateMenuDiv(menuItemArray) {
       price.textContent = menuItem.price;
   
       const menuItemDiv = document.createElement("div");
+      menuItemDiv.classList.add("menuitem");
       menuItemDiv.appendChild(image);
       menuItemDiv.appendChild(itemName);
       menuItemDiv.appendChild(price);
