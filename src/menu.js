@@ -1,4 +1,3 @@
-
 const menuItemFactory = (img, altdescription, itemname, price) => {
     return { img, altdescription, itemname, price }
 }
