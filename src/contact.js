@@ -4,7 +4,7 @@
 
 
 function loadContact() {
-    const mainContent = document.querySelector("main")
+    const mainContent = document.querySelector(".main")
     const contactDiv = document.createElement("div");
 
     mainContent.innerHTML = ''

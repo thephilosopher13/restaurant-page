@@ -29,7 +29,7 @@ function _openingHoursListGenerator(array) {
         const arrayObject = array[i]
 
         listItem.textContent = `${arrayObject.day}: ${arrayObject.hours}`
-        openingHoursListElement.appendChild(item);
+        openingHoursListElement.appendChild(listItem);
     }
 
     return openingHoursListElement
@@ -42,39 +42,63 @@ function imageFactory(src, alt) {
     return image;
 }
 
-    
-
-function loadHome() {
-    const mainContent = document.querySelector("main")
-    const homeDiv = document.createElement("div");
+function createWelcomeDiv() {
     const welcomeDiv = document.createElement("div");
-    const openingHoursDiv = document.createElement("div");
     const welcomeh2 = document.createElement("h2");
-    const openingHoursh2 = document.createElement("h2");
     const description = document.createElement("p");
-    const openingHoursList = _openingHoursListGenerator(_openingHoursObjectArrayGenerator)
-    const welcomeImage = imageFactory('images/welcomesteak.jpg', 'Welcome Steak')
+    const welcomeImage = imageFactory('images/welcomesteak.jpg', 'Welcome Steak');
 
-    mainContent.innerHTML = ''
-
-    homeDiv.classList.add("home");
     welcomeDiv.classList.add("welcome");
-    welcomeh2.classlist.add("welcomeheader");
-    description.classList.add("description");
+    welcomeh2.classList.add("welcomeheader");
     welcomeImage.classList.add("welcomeimage");
-    openingHoursDiv.classList.add("openinghours");
-    openingHoursh2.classList.add("openinghoursh2");
+    description.classList.add("description");
 
     welcomeh2.textContent = "Welcome to Regent Steakhouse!"
     description.textContent = "Regent Steakhouse is a top of the line steakhouse where we prepare steaks with only the finest cuts and the freshest ingredients. Aside from the food, our steakhouse is a great place to have some celebrations with your loved ones or have a business meeting."
 
-    mainContent.appendChild(homeDiv);
     welcomeDiv.appendChild(welcomeh2);
     welcomeDiv.appendChild(description);
     welcomeDiv.appendChild(welcomeImage);
+
+    return welcomeDiv
+}
+
+function createOpeningHoursDiv() {
+    const openingHoursDiv = document.createElement("div");
+    const openingHoursh2 = document.createElement("h2");
+    const openingHoursList = _openingHoursListGenerator(_openingHoursObjectArrayGenerator());
+
+    openingHoursDiv.classList.add("openinghours");
+    openingHoursh2.classList.add("openinghoursh2");
+
+    openingHoursh2.textContent = 'Opening Hours'
+
+    openingHoursDiv.appendChild(openingHoursh2)
+    openingHoursDiv.appendChild(openingHoursList)
+
+    return openingHoursDiv
+}
+
+function createHomeDiv() {
+    const homeDiv = document.createElement("div");
+    const welcomeDiv = createWelcomeDiv();
+    const openingHoursDiv = createOpeningHoursDiv();
+
+    homeDiv.classList.add("home");
+
     homeDiv.appendChild(welcomeDiv);
-    homeDiv.appendChild(openingHoursDiv);
-    openingHoursDiv.appendChild(openingHoursList)        
+    homeDiv.appendChild(openingHoursDiv); 
+
+    return homeDiv
+}
+
+function loadHome() {
+    const mainContent = document.querySelector(".main")
+    const homeDiv = createHomeDiv();
+
+    mainContent.innerHTML = ''
+    
+    mainContent.appendChild(homeDiv);
 }
 
 export default loadHome;

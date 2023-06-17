@@ -80,21 +80,31 @@ function createMainDiv() {
     return mainContent
 }
 
+function createContentDiv() {
+    const contentDiv = document.createElement("div")
+    contentDiv.setAttribute('id', 'content')
+    
+    return contentDiv
+}
+
 
 function loadWebsite() {
     const header = createHeader();
     const footer = createFooter();
     const mainContent = createMainDiv();
-    const contentDiv = document.getElementById('content');
+    const contentDiv = createContentDiv();
+    const body = document.querySelector("body");
 
     contentDiv.appendChild(header);
     contentDiv.appendChild(mainContent);
     contentDiv.appendChild(footer);
+    
+    body.appendChild(contentDiv);
 }
 
 function init() {
     loadWebsite();
-    loadMenu();
+    loadHome();
 }
 
 export default init
