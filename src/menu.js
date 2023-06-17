@@ -22,43 +22,52 @@ function menuItemArrayGenerator() {
       return menuItemArray
 }
 
-function generateMenuDiv(menuItemArray) {
-    const menuDiv = document.querySelector(".menu");
+function imageFactory(src, alt) {
+    const image = document.createElement('img');
+    image.src = src;
+    image.alt = alt;
+    return image;
+}
+
+function generateMenuItemDiv(menuItem) {
+    const image = imageFactory(menuItem.img, menuItem.altdescription)
   
-    for (let i = 0; i < menuItemArray.length; i++) {
-      const menuItem = menuItemArray[i];
+    const itemName = document.createElement("p");
+    itemName.classList.add("itemName");
+    itemName.textContent = menuItem.itemname;
   
-      const image = document.createElement("img");
-      image.src = menuItem.img;
-      image.alt = menuItem.altdescription;
+    const price = document.createElement("p");
+    price.classList.add("price");
+    price.textContent = menuItem.price;
   
-      const itemName = document.createElement("p");
-      itemName.classList.add("itemName");
-      itemName.textContent = menuItem.itemname;
+    const menuItemDiv = document.createElement("div");
+    menuItemDiv.classList.add("menuitem");
+    menuItemDiv.appendChild(image);
+    menuItemDiv.appendChild(itemName);
+    menuItemDiv.appendChild(price);
   
-      const price = document.createElement("p");
-      price.classList.add("price");
-      price.textContent = menuItem.price;
-  
-      const menuItemDiv = document.createElement("div");
-      menuItemDiv.classList.add("menuitem");
-      menuItemDiv.appendChild(image);
-      menuItemDiv.appendChild(itemName);
-      menuItemDiv.appendChild(price);
-  
-      menuDiv.appendChild(menuItemDiv);
-    }
-  
-    return menuDiv;
+    return menuItemDiv;
   }
+
+function generateMenuDiv(menuItemArray) {
+  const menuDiv = document.createElement("div");
+  menuDiv.classList.add("menu");
+
+  for (let i = 0; i < menuItemArray.length; i++) {
+    const menuItem = menuItemArray[i];
+    const menuItemDiv = generateMenuItemDiv(menuItem);
+    menuDiv.appendChild(menuItemDiv);
+  }
+
+  return menuDiv;
+}
 
 function loadMenu() {
     const mainContent = document.querySelector(".main");
-    const menuDiv = document.createElement("div");
     const menuItemArray = menuItemArrayGenerator();
+    const menuDiv = generateMenuDiv(menuItemArray);
 
     mainContent.innerHTML = ''
-    menuDiv.classList.add("menu");
     generateMenuDiv(menuItemArray);
     
     mainContent.appendChild(menuDiv)
