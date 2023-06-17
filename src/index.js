@@ -90,7 +90,7 @@ const initLoader = (() => {
     }
 
     const init =  () => {
-        pageLayoutCreator
+        _pageLayoutCreator();
     }
 
     return {
