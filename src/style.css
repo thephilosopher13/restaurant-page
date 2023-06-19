@@ -61,6 +61,11 @@ nav {
     align-items: center; 
 }
 
+.welcomeheader,
+.description {
+    padding-right: 4rem;
+}
+
 .welcomeimage {
     height: 600px
 }
@@ -81,7 +86,7 @@ button {
 }
 
 .button.active {
-    border-bottom: 2px solid #222;
+    border-bottom: 2px solid white;
 }
 
 .main {

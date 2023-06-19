@@ -66,7 +66,7 @@ function createFooter() {
 
     footer.classList.add("footer");
 
-    credits.textContent = "Copyright © 2023 thephilosopher13";
+    credits.textContent = "Copyright © 2023 thephilosopher13 Images taken from unsplash and iStock";
     
     footer.appendChild(credits);
 
