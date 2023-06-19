@@ -93,6 +93,9 @@ function createHomeDiv() {
 function loadHome() {
     const mainContent = document.querySelector(".main")
     const homeDiv = createHomeDiv();
+    const homeButton = document.querySelector(".home");
+    
+    makeButtonActive(homeButton);
 
     mainContent.innerHTML = ''
     

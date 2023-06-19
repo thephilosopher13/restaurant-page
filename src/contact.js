@@ -85,6 +85,9 @@ function loadContact() {
     const mainContent = document.querySelector(".main")
     const contactDiv = document.createElement("div");
     const contactOptions = contactOptionsListGenerator()
+    const contactButton = document.querySelector(".contact");
+    
+    makeButtonActive(contactButton);
 
     mainContent.innerHTML = ''
     contactDiv.classList.add("contact") 

@@ -80,6 +80,10 @@ button {
     background-color: transparent;
 }
 
+button.active {
+    border-bottom: 2px solid var(--font-color);
+}
+
 .main {
     max-width: 1000px;
     padding: 4rem;
