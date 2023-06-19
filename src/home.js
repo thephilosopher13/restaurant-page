@@ -44,7 +44,7 @@ function createWelcomeDiv() {
     const welcomeDiv = document.createElement("div");
     const welcomeh2 = document.createElement("h2");
     const description = document.createElement("p");
-    const welcomeImage = imageFactory('images/welcomesteak.jpg', 'Welcome Steak');
+    const welcomeImage = imageFactory('../src/images/welcomesteak.jpg', 'Welcome Steak');
 
     welcomeDiv.classList.add("welcome");
     welcomeh2.classList.add("welcomeheader");

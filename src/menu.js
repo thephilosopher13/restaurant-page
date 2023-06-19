@@ -10,7 +10,7 @@ function menuItemArrayGenerator() {
 
     for (let i = 0; i < altDescriptionArray.length; i++) {
         const menuItem = menuItemFactory(
-          `images/${altDescriptionArray[i]}.jpg`,
+          `../src/images/${altDescriptionArray[i]}.jpg`,
           altDescriptionArray[i],
           itemNameArray[i],
           priceArray[i]
@@ -30,6 +30,7 @@ function imageFactory(src, alt) {
 
 function generateMenuItemDiv(menuItem) {
     const image = imageFactory(menuItem.img, menuItem.altdescription)
+    image.classList.add("menuimage")
   
     const itemName = document.createElement("p");
     itemName.classList.add("itemName");
