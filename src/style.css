@@ -80,8 +80,8 @@ button {
     background-color: transparent;
 }
 
-button.active {
-    border-bottom: 2px solid var(--font-color);
+.button.active {
+    border-bottom: 2px solid #222;
 }
 
 .main {

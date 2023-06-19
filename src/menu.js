@@ -70,7 +70,7 @@ function loadMenu() {
     const menuDiv = generateMenuDiv(menuItemArray);
     const menuButton = document.querySelector(".menu");
     
-    makeButtonActive(Button);
+    makeButtonActive(menuButton);
 
     mainContent.innerHTML = ''
     generateMenuDiv(menuItemArray);
