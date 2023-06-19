@@ -1,3 +1,5 @@
+import makeButtonActive from "./navfunctions";
+
 const menuItemFactory = (img, altdescription, itemname, price) => {
     return { img, altdescription, itemname, price }
 }
@@ -66,6 +68,9 @@ function loadMenu() {
     const mainContent = document.querySelector(".main");
     const menuItemArray = menuItemArrayGenerator();
     const menuDiv = generateMenuDiv(menuItemArray);
+    const menuButton = document.querySelector(".menu");
+    
+    makeButtonActive(Button);
 
     mainContent.innerHTML = ''
     generateMenuDiv(menuItemArray);

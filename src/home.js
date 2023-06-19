@@ -1,3 +1,5 @@
+import makeButtonActive from "./navfunctions";
+
 function openingHoursFactory(day, hours) {
     return { day, hours }
 };

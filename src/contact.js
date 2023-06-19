@@ -1,3 +1,5 @@
+import makeButtonActive from "./navfunctions";
+
 const contactFactory = (svg, method, contactdetail) => {
     return {svg, method, contactdetail}
 }
